@@ -50,7 +50,8 @@ class ProfileController extends GetxController {
     final uid = _authRepo.firebaseUser.value?.uid;
 
     await _userRepo.deleteUser(uid!);
-    _authRepo.deleteUser();
+
+    await _authRepo.deleteUser();
   }
 
   //calling the update to update the user

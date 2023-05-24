@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:alqgp/Src/Models/chapter_model.dart';
@@ -25,16 +26,77 @@ class QuizController extends GetxController {
   List<int> indexs = List<int>.filled(2, -1, growable: true);
   RxBool delete = true.obs;
 
+  bool deleted = false;
+  bool incremented = false;
+
+  // RxInt timeer2 = 3.obs;
+
   RxDouble presentage = 0.0.obs;
   RxString photo = "".obs;
   RxString what2do = "somthing went wrong".obs;
   RxString title = "".obs;
 
+  Timer? _timer;
+  Timer? _timer2;
+  int remainingSeconds = 1;
+  final time = '00.00'.obs;
+
+  @override
+  void onReady() {
+    _startTimer(600);
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    if (_timer != null) {
+      _timer!.cancel();
+    }
+    super.onClose();
+  }
+
   @override
   void onInit() {
     super.onInit();
-    // qstream the questions from database to keep track of the changes
+    // stream the questions from database to keep track of the changes
     questionsList.bindStream(_databaseRepo.getQuestions(chapter.chapNum!));
+  }
+
+  _startTimer(int seconds) {
+    const duration = Duration(seconds: 1);
+    remainingSeconds = seconds;
+    _timer = Timer.periodic(duration, (Timer timer) {
+      if (remainingSeconds == -1) {
+        timer.cancel();
+        currentQuestionIndex.value = questions.length - 1;
+        delete.value = true;
+        update();
+      } else {
+        int minutes = remainingSeconds ~/ 60;
+        int seconds = (remainingSeconds % 60);
+        time.value =
+            "${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}";
+        remainingSeconds--;
+      }
+    });
+  }
+
+  startTimer2() {
+    const duration = Duration(seconds: 1);
+    int remainingSeconds2 = 1;
+    _timer2 = Timer.periodic(duration, (Timer timer2) {
+      if (remainingSeconds2 == 0) {
+        timer2.cancel();
+        if (Get.isDialogOpen ?? false) Get.back();
+      } else {
+        remainingSeconds2--;
+      }
+    });
+  }
+
+  incrementTime() {
+    remainingSeconds = remainingSeconds + 10;
+    incremented = true;
   }
 
   updateScore() {
@@ -82,7 +144,7 @@ class QuizController extends GetxController {
     print("the sssss selectd : $selectedAnswers");
   }
 
-// moves the quiz ti hte next user
+// moves the quiz ti hte next quetion
   next() {
     currentQuestionIndex.value = currentQuestionIndex.value + 1;
     delete.value = true;

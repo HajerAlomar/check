@@ -40,7 +40,7 @@ class AuthenticationRepository extends GetxController {
     bool state = true;
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNo,
-      verificationCompleted: (credential) async {}, //if error in otp del async
+      verificationCompleted: (credential) {}, //if error in otp del async
       codeSent: (verificationId, resendToken) {
         this.verificationId.value = verificationId;
       },

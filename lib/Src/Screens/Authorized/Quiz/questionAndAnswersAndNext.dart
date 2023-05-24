@@ -77,20 +77,58 @@ Container questionAndAnswersAndNext(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
+                // shuffling the answers to get a arondom answers order each time
+                quizController
+                    .questions[quizController.currentQuestionIndex.value + 1]
+                    .answers!
+                    .shuffle();
                 //if the answer is correct
-                if (quizController
-                        .questions[quizController.currentQuestionIndex.value]
-                        .answers![quizController
-                            .selectedAnswers[
-                        quizController.currentQuestionIndex.value]] ==
-                    quizController
-                        .questions[quizController.currentQuestionIndex.value]
-                        .correct) {
-                  quizController.isCorrect(1);
+                if (!quizController.deleted) {
+                  if (quizController
+                          .questions[quizController.currentQuestionIndex.value]
+                          .answers![quizController
+                              .selectedAnswers[
+                          quizController.currentQuestionIndex.value]] ==
+                      quizController
+                          .questions[quizController.currentQuestionIndex.value]
+                          .correct) {
+                    quizController.isCorrect(1);
+                    print(
+                        "the choosen ans ${quizController.questions[quizController.currentQuestionIndex.value].answers![quizController.selectedAnswers[quizController.currentQuestionIndex.value]]}");
+                    print(
+                        "the correct ans ${quizController.questions[quizController.currentQuestionIndex.value].correct}");
+                  } else {
+                    quizController.isCorrect(0);
+                    print(
+                        "the choosen ans ${quizController.questions[quizController.currentQuestionIndex.value].answers![quizController.selectedAnswers[quizController.currentQuestionIndex.value]]}");
+                    print(
+                        "the correct ans ${quizController.questions[quizController.currentQuestionIndex.value].correct}");
+                  }
+                  quizController.next();
                 } else {
-                  quizController.isCorrect(0);
+                  //************* needa change cos the ans is based on the answers arr not the new arr */
+                  if (quizController
+                          .questions[quizController.currentQuestionIndex.value]
+                          .answers![quizController
+                              .selectedAnswers[
+                          quizController.currentQuestionIndex.value]] ==
+                      quizController
+                          .questions[quizController.currentQuestionIndex.value]
+                          .correct) {
+                    quizController.isCorrect(1);
+                    print(
+                        "the choosen in deleted ans ${quizController.questions[quizController.currentQuestionIndex.value].answers![quizController.selectedAnswers[quizController.currentQuestionIndex.value]]}");
+                    print(
+                        "the correct in deleted ans ${quizController.questions[quizController.currentQuestionIndex.value].correct}");
+                  } else {
+                    quizController.isCorrect(0);
+                    print(
+                        "the choosen ans ${quizController.questions[quizController.currentQuestionIndex.value].answers![quizController.selectedAnswers[quizController.currentQuestionIndex.value]]}");
+                    print(
+                        "the correct ans ${quizController.questions[quizController.currentQuestionIndex.value].correct}");
+                  }
+                  quizController.next();
                 }
-                quizController.next();
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

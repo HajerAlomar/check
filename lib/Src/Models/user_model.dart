@@ -13,7 +13,8 @@ class UserModel {
       this.email,
       this.fullName,
       this.phoneNo,
-      this.photo = "images/profile2.png",
+      this.photo =
+          "https://firebasestorage.googleapis.com/v0/b/alq-gp.appspot.com/o/images%2Fprofile2.png?alt=media&token=3b980678-4808-4526-99e5-96b7f5b8d81f",
       this.score = 0,
       this.ch1status = false,
       this.ch2status = false,

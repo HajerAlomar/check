@@ -7,14 +7,14 @@ const String tEmail = "E-Mail";
 const String tSignup = "Signup";
 const String tPhoneNo = "Phone No";
 const String tPassword = "Password";
-const String tFullName = "Name";
+const String tFullName = "Full Name";
 const String tForgetPassword = "Forgot Password?";
 const String tChangePassword = "Change Password";
 const String tSignInWithGoogle = "Sign-In with Google";
 
 // -- Splash Screen Text
 const String tAppName = "ALAQ";
-const String tAppTagLine = "solgan";
+const String tAppTagLine = "When learning is enjoyable !";
 
 // -- On Boarding Text
 const String tOnBoardingTitle1 = "somthing 1";
@@ -52,7 +52,7 @@ const String tResetViaPhone = "Reset via Phone Verification";
 // OTP Screen - Text
 const String tOtpTitle = "CO\nDE";
 const String tOtpSubTitle = "Verification";
-const String tOtpMessage = "Enter the verification code sent at ";
+const String tOtpMessage = "Enter the verification code sent to";
 
 // -- Forget Password Via Phone - Text
 const String tForgetPhoneSubTitle =
@@ -61,14 +61,6 @@ const String tForgetPhoneSubTitle =
 // -- Forget Password Via E-Mail - Text
 const String tForgetMailSubTitle =
     "Enter your registered E-Mail to receive OTP";
-
-//-- Dashboard Screen - Text
-const String tDashboardSearch = "Search...";
-const String tDashboardBannerTitle1 = "Android for Beginners";
-const String tDashboardBannerTitle2 = "JAVA";
-const String tDashboardBannerSubTitle = "10 Lessons";
-const String tDashboardButton = "View All";
-const String tDashboardTopCourses = "Top Courses";
 
 // -- Home Screen - text
 const String tHomeTitle = "Welcome Back ";

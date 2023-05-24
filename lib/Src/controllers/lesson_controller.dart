@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
+import 'home_controller.dart';
+
 class LessonController extends GetxController {
   static LessonController get instance => Get.find();
 
   final _databaseRepo = Get.put(DatabaseRepository());
-
+  final homeController = Get.put(HomeController());
   //prameter for this page
   final lesson lessonContent = Get.arguments["lessonData"];
   final RxList<lesson> lessonsList = Get.arguments["lessonsList"];
   final int currentLessonIndex = Get.arguments["currentIndex"];
   final int chapterNum = Get.arguments["chapterNum"];
+  // final int chaptercount = Get.arguments["chaptercount"];
 
   // TTS instence
   FlutterTts flutterTts = FlutterTts();
@@ -46,8 +49,12 @@ class LessonController extends GetxController {
   // direct the user to next lesson
   nextLesson() {
     if (currentLessonIndex + 1 >= lessonsList.length) {
+      _databaseRepo.updateChaptercount(
+          homeController.setChapterProgress(chapterNum) + 1, chapterNum);
       Get.back();
     } else {
+      _databaseRepo.updateChaptercount(
+          homeController.setChapterProgress(chapterNum) + 1, chapterNum);
       Get.delete<LessonController>(force: true);
       Get.offAndToNamed("/lesson", arguments: {
         "lessonData": lessonsList[currentLessonIndex + 1],

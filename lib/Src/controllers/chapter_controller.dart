@@ -17,6 +17,15 @@ class ChapterController extends GetxController {
   FlutterTts flutterTts = FlutterTts();
   RxBool tts = true.obs;
 
+  // quiz button condition vars
+  RxBool ar = false.obs;
+  RxBool lesons = false.obs;
+
+  // chapter vars
+  final Chapter chapterContent = Get.arguments;
+  final pageController = PageController();
+  RxInt currentPage = 0.obs;
+
   @override
   void onInit() {
     initTts();
@@ -31,13 +40,13 @@ class ChapterController extends GetxController {
     flutterTts.stop();
   }
 
-  final Chapter chapterContent = Get.arguments;
-  final pageController = PageController();
-  RxInt currentPage = 0.obs;
-
   onPageChangedCallback(int activePageIndex) {
     currentPage.value = activePageIndex;
   }
+
+  // theChapIsDone() {
+  //   _databaseRepo.itsDone(chapterContent.chapNum);
+  // }
 
   // TTS functions
   initTts() {

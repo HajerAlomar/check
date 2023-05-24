@@ -62,7 +62,7 @@ Container scoreArea(
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: quizController.questions.length,
+                  itemCount: quizController.questions.length - 1,
                   itemBuilder: (context, index) => Container(
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),

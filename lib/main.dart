@@ -82,6 +82,9 @@ void main() async {
 
 // File structure :
 // controllers - the logic of the named screens
+// Modlels - the model (opject)
+// Screens - all the UIs code
+// services = the DB code and queiries
 //
 
 class MyApp extends StatelessWidget {

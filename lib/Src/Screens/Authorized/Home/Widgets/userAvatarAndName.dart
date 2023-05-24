@@ -44,7 +44,9 @@ class PeerRankWithAvatarAndName extends StatelessWidget {
                             },
                             physics: const BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
-                            itemCount: controller.allUsers.length,
+                            itemCount: controller.allUsers.length < 5
+                                ? controller.allUsers.length
+                                : 5,
                             itemBuilder: (context, index) {
                               return Container(
                                 // height: 100,

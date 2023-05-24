@@ -21,10 +21,9 @@ class quiz extends StatelessWidget {
           if (quizController != null && quizController.questions != null) {
             if (quizController.currentQuestionIndex.value <
                 quizController.questions.length - 1) {
-              // shuffling the answers to get a arondom answers order each time
-              quizController
-                  .questions[quizController.currentQuestionIndex.value].answers!
-                  .shuffle();
+              print(quizController
+                  .questions[quizController.currentQuestionIndex.value]
+                  .answers!);
 
               return Stack(children: [
                 // background
@@ -41,7 +40,7 @@ class quiz extends StatelessWidget {
                 questionAndAnswersAndNext(size, quizController, context),
               ]);
             } else {
-              // answers check
+              // answers score
               return Stack(
                 children: [
                   // background

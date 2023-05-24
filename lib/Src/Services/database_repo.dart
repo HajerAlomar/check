@@ -40,8 +40,9 @@ class DatabaseRepository extends GetxController {
 
   //   return lessonData;
   // }
-
+  //get the chapter's lessons
   Stream<List<lesson>> getLessons(int chapterNumper) {
+    print(chapterNumper);
     return _db
         .collection("chapters")
         .doc("Chapter $chapterNumper")
@@ -99,7 +100,7 @@ class DatabaseRepository extends GetxController {
     });
   }
 
-  // add to bookmark
+  // add a lesson to bookmark folder
   Future<void> addBookmark(String id, int chapterNum, String folderID,
       String name, int count) async {
     final uid = _authRepo.firebaseUser.value?.uid;
@@ -187,6 +188,7 @@ class DatabaseRepository extends GetxController {
         .collection("chapters")
         .doc("Chapter $chapterNumper")
         .collection("Quiz")
+        .limit(11)
         .snapshots()
         .map((data) {
       List<Quiz> questions = [];
@@ -205,6 +207,15 @@ class DatabaseRepository extends GetxController {
       "score": sum,
       "ch${chapterNum}status": true,
       "ch${chapterNum}quiz": true,
+    });
+  }
+
+  //updates the user's chap score
+  Future<void> updateChaptercount(int sum, int chapterNum) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+
+    await _db.collection("Users").doc(uid).update({
+      "ch${chapterNum}prog": sum,
     });
   }
 

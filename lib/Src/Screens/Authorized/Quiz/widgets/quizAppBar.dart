@@ -1,6 +1,7 @@
 import 'package:alqgp/Src/Utils/Consts/consts.dart';
 import 'package:alqgp/Src/controllers/quiz_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Positioned quizAppBar(
     Size size, BuildContext context, QuizController quizController) {
@@ -14,9 +15,9 @@ Positioned quizAppBar(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // timer
-          Container(
-            child: Center(
-                child: Text("09:29", // set the god danm timer
+          Obx(
+            () => Center(
+                child: Text(quizController.time.value,
                     style: Theme.of(context).textTheme.headline5)),
           ),
 
@@ -31,17 +32,35 @@ Positioned quizAppBar(
             children: [
               GestureDetector(
                   onTap: () {
-                    /**********  add the increase timer*/
+                    //increase timer
+                    if (quizController.incremented != true) {
+                      quizController.incrementTime();
+                    } else {
+                      Get.defaultDialog(
+                          content: const Center(
+                        child: Text("you already used this hint before"),
+                      ));
+                      quizController.startTimer2();
+                    }
                   },
                   child: const Icon(Icons.av_timer_outlined, size: 30)),
               SizedBox(
-                width: size.width * 0.01,
+                width: size.width * 0.02,
               ),
               GestureDetector(
                   onTap: () {
-                    quizController.delete.value = false;
-                    print(quizController.delete.value);
-                    quizController.update();
+                    // delete 2 answers
+                    if (quizController.deleted != true) {
+                      quizController.delete.value = false;
+                      quizController.deleted = true;
+                      quizController.update();
+                    } else {
+                      Get.defaultDialog(
+                          content: const Center(
+                        child: Text("you already used this hint before"),
+                      ));
+                      quizController.startTimer2();
+                    }
                   },
                   child: const Icon(Icons.delete_sweep_outlined, size: 30))
             ],

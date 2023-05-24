@@ -64,20 +64,30 @@ class Chaptercontent extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              Get.to(() => quiz(),
-                                  arguments: chapterController.chapterContent);
+                              (controller.ar.value && controller.lesons.value)
+                                  ? Get.to(() => quiz(),
+                                      arguments:
+                                          chapterController.chapterContent)
+                                  : Get.defaultDialog(
+                                      content: const Center(
+                                      child: Text(
+                                          "You have to use the AR and read all organs' information"),
+                                    ));
                             },
-                            style: ElevatedButton.styleFrom(
-                              /// ****** remove
-                              backgroundColor: Colors.grey,
-
-                              /// ****** remove
-                              side: BorderSide(color: Colors.grey),
-
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                            ),
+                            style: controller.ar.value &&
+                                    controller.lesons.value
+                                ? ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                  )
+                                : ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey,
+                                    side: BorderSide(color: Colors.grey),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                  ),
                             child: Text(tQuiz.toUpperCase()),
                           ),
                         ),
@@ -96,7 +106,7 @@ class Chaptercontent extends StatelessWidget {
               // back button
               backButton(),
 
-              // AR
+              // AR button
               Positioned(
                 right: tDefaultPadding,
                 top: tDefaultSize,
@@ -109,12 +119,30 @@ class Chaptercontent extends StatelessWidget {
                   width: 50,
                   child: IconButton(
                       onPressed: () {
+                        controller.ar.value = true;
                         Get.to(() =>
                             AR(chaptNum: controller.chapterContent.chapNum!));
                       },
                       icon: Icon(Icons.view_in_ar)),
                 ),
               ),
+
+              // // down button
+              // Positioned(
+              //   right: tDefaultPadding,
+              //   bottom: tDefaultSize + 20,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(tCardRadius),
+              //       color: Colors.grey.shade300.withOpacity(0.33),
+              //     ),
+              //     height: 50,
+              //     width: 50,
+              //     child: IconButton(
+              //         onPressed: () {},
+              //         icon: Icon(Icons.arrow_drop_down_circle_outlined)),
+              //   ),
+              // ),
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:alqgp/Src/Utils/Consts/consts.dart';
 import 'package:alqgp/Src/Widgets/findBookmarksFolders.dart';
 import 'package:alqgp/Src/Widgets/grayBar.dart';
+import 'package:alqgp/Src/controllers/chapter_controller.dart';
 import 'package:alqgp/Src/controllers/lesson_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,26 +53,26 @@ DraggableScrollableSheet lessonArea(Size size, LessonController controller) {
                     () => GestureDetector(
                       onTap: () {
                         // *********** add to/from bookmark
-                        controller.lessonsList[controller.currentLessonIndex]
-                                .bookmarked!
-                            ? Get.bottomSheet(
-                                backgroundColor: Colors.white,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(tCardRadius),
-                                        topRight:
-                                            Radius.circular(tCardRadius))),
-                                findBookmarksFolders(
-                                    controller, context, false),
-                              )
-                            : print("yaaaaaay");
+                        // controller.lessonsList[controller.currentLessonIndex]
+                        //         .bookmarked!
+                        //     ?
+                        Get.bottomSheet(
+                          backgroundColor: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(tCardRadius),
+                                  topRight: Radius.circular(tCardRadius))),
+                          findBookmarksFolders(controller, context, false),
+                        )
+                            // : print("yaaaaaay")
+                            ;
                       },
                       child: Icon(
                         Icons.bookmark,
                         color: controller
                                 .lessonsList[controller.currentLessonIndex]
                                 .bookmarked!
-                            ? Colors.blue
+                            ? Colors.amber
                             : Colors.amber,
                       ),
                     ),
@@ -79,7 +80,7 @@ DraggableScrollableSheet lessonArea(Size size, LessonController controller) {
                 ],
               ),
 
-              const SizedBox(height: tDefaultSpacing),
+              const SizedBox(height: tDefaultSpacing - 25), // check with Hajar
 
               //Lesson card and indecator
               Obx(
@@ -225,6 +226,10 @@ DraggableScrollableSheet lessonArea(Size size, LessonController controller) {
                   child: ElevatedButton(
                     onPressed: () {
                       controller.nextLesson();
+                      if (controller.currentLessonIndex + 1 >=
+                          controller.lessonsList.length) {
+                        ChapterController.instance.lesons.value = true;
+                      }
                     },
                     child: Text(controller.currentLessonIndex + 1 >=
                             controller.lessonsList.length
