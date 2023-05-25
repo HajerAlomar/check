@@ -106,7 +106,7 @@ class QuizController extends GetxController {
         sum += scores[i];
       }
     }
-    presentage.value = sum / questions.length;
+    presentage.value = sum / questions.length - 1;
     _databaseRepo.updateChapterScore(sum, chapter.chapNum!);
     update();
     return sum;
@@ -114,12 +114,14 @@ class QuizController extends GetxController {
 
 // defines the grade of the user and what too write in the UI
   ABC() {
-    if (presentage.value >= 0.8) {
+    // updateScore();
+    print(presentage.value);
+    if (updateScore() / questions.length - 1 >= 0.8) {
       photo.value = "images/rating.png";
       what2do.value = " WoW you nailed it";
       title.value = "Perfect";
       return title.value;
-    } else if (presentage.value >= 0.5) {
+    } else if (updateScore() / questions.length - 1 >= 0.5) {
       photo.value = "images/star.png";
       what2do.value = "oh yeah, you got that";
       title.value = "Good";

@@ -12,6 +12,7 @@ SizedBox lessonCardWithIndicatorAndModel(
     height: size.height * 0.60,
     child: Stack(
       children: [
+        // 3d model
         modelWidget(
             size.height * 0.33, chapterData[0].nameAndModle.split(",")[1]),
 
@@ -43,6 +44,8 @@ SizedBox lessonCardWithIndicatorAndModel(
               Expanded(
                 child: PageView.builder(
                     controller: controller.pageController,
+
+                    // when switch stop tts and change page num
                     onPageChanged: (value) {
                       controller.onPageChangedCallback(value);
                       controller.stoptTTS();
@@ -80,6 +83,7 @@ SizedBox lessonCardWithIndicatorAndModel(
                                   Obx(
                                     () => GestureDetector(
                                       onTap: () {
+                                        // start / stop tts
                                         controller.tts.value
                                             ? controller.startTTS(chapterData[0]
                                                 .parts![index]

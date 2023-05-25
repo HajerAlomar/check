@@ -21,12 +21,19 @@ class Home extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //the name and the welcome
                 HomePageHeader(controller),
                 SizedBox(height: tDefaultPadding),
+
+                // chapter cards
                 ChapterProgressList(),
                 SizedBox(height: tDefaultSpacing),
+
+                //the user's ans thier names
                 PeerRankWithAvatarAndName(),
                 SizedBox(height: tDefaultSpacing),
+
+                // achive
                 AchievementsWithHeader()
               ],
             ),

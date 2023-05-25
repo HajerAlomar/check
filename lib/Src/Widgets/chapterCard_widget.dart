@@ -142,8 +142,8 @@ class ChapterCard extends StatelessWidget {
                         learning
                             ? homeController.setChapterStatus(chapter.chapNum!)
                                 // ********* "Status:" ?????!
-                                ? ""
-                                : ""
+                                ? "Status: completed"
+                                : "Status: incomplete"
                             : chapter.chapterName!,
                         style: learning
                             ? TextStyle(color: Colors.white, fontSize: 19)

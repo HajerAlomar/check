@@ -110,6 +110,7 @@ class MyApp extends StatelessWidget {
 
       // kick off with the splash screen.
       home: SplashScreen(),
+
       getPages: [
         GetPage(name: "/lesson", page: () => Lesson()),
       ],

@@ -31,6 +31,8 @@ class Chaptercontent extends StatelessWidget {
                     return Column(
                       children: [
                         //******** fullscreen in 3D
+
+                        // 3d model + lesson 0
                         lessonCardWithIndicatorAndModel(
                             size, chapterController.lessons, controller),
                         const SizedBox(height: tDefaultPadding),
@@ -48,6 +50,8 @@ class Chaptercontent extends StatelessWidget {
                                     style:
                                         Theme.of(context).textTheme.headline5),
                               ),
+
+                              //lesson card
                               lessonCardList(chapterController.lessons,
                                   controller.chapterContent.chapNum!),
                             ],
