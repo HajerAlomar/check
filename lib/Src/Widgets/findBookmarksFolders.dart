@@ -120,6 +120,7 @@ GridView bookmarksScreenFolders(
       ),
       itemCount: folderController.folders.length,
       itemBuilder: (_, index) {
+        // check if it's a bookmarks list for bookmarks screen or for add bookmark in lessons secreen
         return folderController.folders[index].isLast
             ? addBookmarkFolder(folderController, context)
             : bookmarkFolderCard(folderController.folders[index], context);

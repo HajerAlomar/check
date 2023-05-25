@@ -21,6 +21,8 @@ class PeerRankWithAvatarAndName extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(tHomeHeading2, style: Theme.of(context).textTheme.headline5),
+
+            // all users text button
             TextButton(
                 onPressed: () => {Get.to(() => AllUsers())},
                 child:

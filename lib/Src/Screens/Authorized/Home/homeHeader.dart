@@ -18,6 +18,7 @@ Padding HomePageHeader(HomeController controller) {
         ),
         Obx(
           () => Text(
+            //the user's name
             controller.theUser.fullName!.split(" ")[0],
             style: const TextStyle(
               fontSize: 28,

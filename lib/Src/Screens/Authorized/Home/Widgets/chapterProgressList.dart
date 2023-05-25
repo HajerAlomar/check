@@ -39,6 +39,7 @@ class ChapterProgressList extends StatelessWidget {
                       )),
                 );
               } else {
+                //if there's nothing in the chapters db
                 return const Center(child: CircularProgressIndicator());
               }
             },

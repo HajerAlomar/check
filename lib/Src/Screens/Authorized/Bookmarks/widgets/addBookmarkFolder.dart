@@ -10,6 +10,7 @@ Widget addBookmarkFolder(BookmarksFolderController controller, context) {
   Size size = MediaQuery.of(context).size;
   return GestureDetector(
     onTap: () {
+      // to add a new folder from the bottom sheet
       addFolderBottomSheet(size, context, controller);
     },
     child: DottedBorder(
@@ -119,7 +120,7 @@ Future<dynamic> addFolderBottomSheet(
                     if (controller.FolderTitle.text != "") {
                       controller.addFolder(controller.FolderTitle.text);
                       controller.FolderTitle.clear();
-                      // show snackbar that it was success
+                      // show snackbar (notification) that it was success
                       Get.snackbar("Success",
                           "The bookmark has been added successfully.",
                           snackPosition: SnackPosition.BOTTOM,

@@ -23,8 +23,9 @@ Container scoreArea(
           ),
         ),
         Container(
+          //space
           margin: const EdgeInsets.symmetric(
-            vertical: tDefaultSpacing,
+            vertical: tDefaultSpacing - 20,
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -37,9 +38,11 @@ Container scoreArea(
             ),
           ),
         ),
+
+        // the score out of score
         Center(
           child: Text(
-              "${quizController.updateScore()} / ${quizController.questionNumber()}",
+              "${quizController.updateScore()} / ${quizController.questionNumber() - 1}",
               style: Theme.of(context).textTheme.headline5),
         ),
 
