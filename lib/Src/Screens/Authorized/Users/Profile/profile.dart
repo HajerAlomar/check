@@ -60,8 +60,6 @@ class profile extends StatelessWidget {
               init: Get.put<HomeController>(HomeController()),
               builder: (HomeController homeController) {
                 if (homeController != null && homeController.theUser != null) {
-                  // check if it's a bookmarks list for bookmarks screen or for add bookmark in lessons secreen
-
                   return Container(
                     padding: const EdgeInsets.all(tDefaultScreenPadding),
                     margin: const EdgeInsets.only(top: tDefaultSpacing * 1.33),
