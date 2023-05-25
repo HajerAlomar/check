@@ -34,7 +34,7 @@ SizedBox lessonCardList(List<lesson> chapterData, int chapNum) {
                                 BorderRadius.circular(tCardRadius), //100 ***
                             border: Border.all(),
                             image: DecorationImage(
-                              image: AssetImage("images/backgraund3.png"),
+                              image: AssetImage("images/backgraund2.png"),
                               fit: BoxFit.cover,
                             ),
                           ),

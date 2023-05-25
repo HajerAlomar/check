@@ -12,7 +12,7 @@ Widget bookmarkFolderCard(bookmarkFolder bookmarkFolder, BuildContext context) {
       Get.to(() => bookmarks(), arguments: bookmarkFolder);
     },
     child: Container(
-      padding: const EdgeInsets.all(15), // ***** check on that
+      padding: const EdgeInsets.all(10), // ***** check on that
       decoration: BoxDecoration(
         color: bookmarkFolder.bgColor,
         borderRadius: BorderRadius.circular(tCardRadius),

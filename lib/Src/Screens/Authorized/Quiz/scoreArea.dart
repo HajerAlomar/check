@@ -24,7 +24,7 @@ Container scoreArea(
         ),
         Container(
           margin: const EdgeInsets.symmetric(
-            vertical: tDefaultSpacing,
+            vertical: tDefaultSpacing -50,
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),

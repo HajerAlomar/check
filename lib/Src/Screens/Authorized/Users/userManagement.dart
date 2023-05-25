@@ -47,7 +47,7 @@ class UserManagement extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               backgroundImage: NetworkImage(userData.photo!),
-                              radius: size.width * 0.15,
+                              radius: size.width * 0.10,
                             ),
                             const Divider(),
                             Column(

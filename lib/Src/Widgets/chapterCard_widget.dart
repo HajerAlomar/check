@@ -149,17 +149,17 @@ class ChapterCard extends StatelessWidget {
                             ? TextStyle(color: Colors.white, fontSize: 19)
                             : TextStyle(color: Colors.white, fontSize: 25),
                       ),
-                      // learning
-                      //     ? homeController.setChapterStatus(chapter.chapNum!)
-                      //         ? Icon(
-                      //             Icons.check_circle,
-                      //             color: Colors.green,
-                      //           )
-                      //         : Icon(
-                      //             Icons.close_rounded,
-                      //             color: Colors.red,
-                      //           )
-                      //     : SizedBox(),
+                      learning
+                          ? homeController.setChapterStatus(chapter.chapNum!)
+                              ? Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                )
+                              : Icon(
+                                  Icons.close_rounded,
+                                  color: Colors.red,
+                                )
+                          : SizedBox(),
                     ],
                   ),
                 ),
